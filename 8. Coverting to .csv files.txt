@@ -1,0 +1,9 @@
+files <- list.files(pattern ='data*.')
+a= matrix(,1000,76)
+for(i in 1:4524) {
+x <- read.table(files[i], sep="\t")
+a<-x
+write.csv(a, file = files[i])
+}
+b <- paste("data", 1:4524, ".csv", sep = "")
+file.rename(files, b)

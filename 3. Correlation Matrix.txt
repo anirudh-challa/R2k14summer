@@ -1,0 +1,11 @@
+a= matrix( ,25,25)
+x<-read.csv("mydatascaled.csv")
+for(j in 2:23){
+y<-x[,j]
+for(i in 2:23){
+z<-x[,i]
+a[j,i]<-cor(y,z)
+}
+}
+a<-a[2:25,2:25]
+write.csv(a, file = "temp.csv")

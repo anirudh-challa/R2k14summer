@@ -1,0 +1,100 @@
+library(caret)
+x<-read.csv("classdata.csv")
+trainset<-x[1:2100,]
+testset<-x[2101:4200,]
+
+Extroversion:
+trainset<-x[1:2100,]
+testset<-x[2101:4200,]
+results_svm=train(Extravertedness~(Funny+Angry+Persuasive+Ingenious+Image.quality+Audio.quality+Edition.quality+Expertise+Unpleasent+attention.centric+Thinks.special+Thinks.steller+Finds.manipulate.easy),data=trainset,method="svmLinear",preProcess="range",trControl=trainControl(method = "cv"),tuneLength=5)
+preds_svm=predict(results_svm, testset[,-1])
+for(j in 1:2100){
+if(preds_svm[j]<=4.9){
+preds_svm[j]<-'I'
+}
+else{
+preds_svm[j]<-'E'
+}
+}
+
+for(j in 1:2100){
+if(testset[j,1]<=4.9){
+testset[j,1]<-'I'
+}
+else{
+testset[j,1]<-'E'
+}
+}
+confusionMatrix(preds_svm,testset[,1],positive="E")
+
+Agreeableness:
+trainset<-x[1:2100,]
+testset<-x[2101:4200,]
+results_svm=train(Agreeableness ~(Pretty+Intelligent+Persuasive),data=trainset,method="svmLinear",preProcess="range",trControl=trainControl(method = "cv"),tuneLength=5)
+preds_svm=predict(results_svm, testset[,-2])
+for(j in 1:2100){
+if(preds_svm[j]<=4.67338){
+preds_svm[j]<-'NA'
+}
+else{
+preds_svm[j]<-'A'
+}
+}
+
+for(j in 1:2100){
+if(testset[j,2]<=4.67338){
+testset[j,2]<-'NA'
+}
+else{
+testset[j,2]<-'A'
+}
+}
+confusionMatrix(preds_svm,testset[,2],positive="A")
+
+Expertise:
+trainset<-x[1:2100,]
+testset<-x[2101:4200,]
+results_svm=train(Expertise~(Extravertedness+Funny+Angry+Ingenious+Image.quality+Audio.quality+Edition.quality+Unpleasent+attention.centric+Thinks.steller),data=trainset,method="svmLinear",preProcess="range",trControl=trainControl(method = "cv"),tuneLength=5)
+preds_svm=predict(results_svm, testset[,-14])
+for(j in 1:2100){
+if(preds_svm[j]<=4.157359641){
+preds_svm[j]<-'NE'
+}
+else{
+preds_svm[j]<-'E'
+}
+}
+
+for(j in 1:2100){
+if(testset[j,14]<=4.157359641){
+testset[j,14]<-'NE'
+}
+else{
+testset[j,14]<-'E'
+}
+}
+confusionMatrix(preds_svm,testset[,14],positive="E")
+
+Persuasiveness:
+trainset<-x[1:2100,]
+testset<-x[2101:4200,]
+results_svm=train(Persuasive~(Extravertedness+Agreeableness+Intelligent+Funny+Happy+Angry+Bored+Ingenious+Unpleasent),data=trainset,method="svmLinear",preProcess="range",trControl=trainControl(method = "cv"),tuneLength=5)
+preds_svm=predict(results_svm, testset[,-9])
+for(j in 1:2100){
+if(preds_svm[j]<=4.315657123){
+preds_svm[j]<-'NP'
+}
+else{
+preds_svm[j]<-'P'
+}
+}
+
+for(j in 1:2100){
+if(testset[j,9]<=4.315657123){
+testset[j,9]<-'NP'
+}
+else{
+testset[j,9]<-'P'
+}
+}
+confusionMatrix(preds_svm,testset[,9],positive="P")

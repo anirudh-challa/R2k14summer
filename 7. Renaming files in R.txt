@@ -1,0 +1,4 @@
+startingDir<-"D:/comp stuff/intern/iiitb/Attention Tool Data"
+files<-list.files(startingDir,pattern="Dump*")
+b <- paste("data", 1:4524, ".txt", sep = "")
+file.rename(files, b)

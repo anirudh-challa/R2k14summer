@@ -1,0 +1,13 @@
+x<-read.csv("mydatascaled.csv")
+
+Extroversion:
+lregext = lm(x$Extraverted~(x$Funny+x$Angry+x$Persuasive+x$Ingenious+x$Image.quality+x$Audio.quality+x$Edition.quality+x$Expertise+x$Unpleasent+x$attention.centric+x$Thinks.special+x$Thinks.steller+x$Finds.manipulate.easy)) 
+
+Agreeableness:
+lrega = lm(x$Agreeableness ~(x$Pretty+x$Intelligent+x$Persuasive))
+
+Expertise:
+lregexp = lm(x$Expertise~(x$Extraverted+x$Funny+x$Angry+x$Ingenious+x$Image.quality+x$Audio.quality+x$Edition.quality+x$Unpleasent+x$attention.centric+x$Thinks.steller))
+
+Persuasive:
+lrep = lm(x$Persuasive~(x$Extraverted+x$Agreeableness+x$Intelligent+x$Funny+x$Happy+x$Angry+x$Bored+x$Ingenious+x$Unpleasent)) 

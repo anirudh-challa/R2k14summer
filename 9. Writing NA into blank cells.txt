@@ -1,0 +1,15 @@
+files <- list.files(pattern ='data*.')
+blank2na <- function(x){ 
+    z <- gsub("\\s+", "", x)  #make sure it's "" and not " " etc
+    x[z==""] <- NA 
+    return(x)
+}
+
+for(i in 1:4524) {
+x <- read.csv(files[i])
+for(j in 15:74)
+{
+x[,j]<-(sapply(x[,j],  blank2na))
+}
+write.csv(x,file = files[i])
+}

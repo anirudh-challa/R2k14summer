@@ -1,0 +1,4 @@
+x<-read.csv("mydata.csv")
+x[,2]<-(x[,2]+(8-x[,4]))/2
+x[,5]<-(x[,5]+(8-x[,3]))/2
+write.csv(x, file = "temp.csv")

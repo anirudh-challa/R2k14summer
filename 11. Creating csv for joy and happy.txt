@@ -1,0 +1,22 @@
+x<-read.csv("joy.csv")
+y<-read.csv("happy.csv")
+z=matrix(,4000,4)
+n1<-nrow(x)
+n2<-nrow(y)
+f=0
+for(i in 1:n1){
+
+for(j in 1:n2){
+if(toString(x[i,1]) == toString(y[j,1]) ){
+f<-f+1
+z[f,1]<-toString(x[i,1])
+z[f,2]<-x[i,2]
+z[f,3]<-y[j,2]
+z[f,4]<-y[j,3]
+break
+}
+}
+}
+
+
+write.csv(z,"joyhappy.csv")

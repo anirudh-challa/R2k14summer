@@ -1,0 +1,7 @@
+x<-read.csv("all_FinalDatasetmodified.csv")
+ y<-x[,28:53]
+ z<-y[,1]
+ z<-list(z)
+a<-aggregate(y,z,mean)
+There were 50 or more warnings (use warnings() to see the first 50)
+write.csv(a, file = "MyData.csv")

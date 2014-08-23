@@ -1,0 +1,7 @@
+x<-read.csv("mydatascaled.csv")
+for(i in 2:25){
+y<-x[,i]
+a[i]<-mean(y)
+}
+a<-a[2:25]
+write.csv(a, file = "temp.csv")

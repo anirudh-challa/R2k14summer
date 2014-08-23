@@ -1,0 +1,7 @@
+x<-read.csv("mydata.csv")
+for(i in 2:26){
+y<-x[,i]
+z<-x[order(-y),]
+a<-z[1:5,c(1,i)]
+print(a)
+}

@@ -1,0 +1,21 @@
+files <- list.files(pattern ='data*.')
+a= matrix(,4525,65)
+for(i in 1:4524) {
+x <- read.csv(files[i])
+n <-nrow(x)
+a[i,1]<-toString(x[3,5])
+for(j in 2:61){
+f=0
+g=0.0
+for(k in 2:n){
+if(is.na(x[k,j+14]) ==FALSE){
+g<-g+as.numeric(as.character(x[k,j+14]))
+f<-f+1
+}
+}
+a[i,j]<-(g/f)
+}
+
+}
+write.csv(a, file = "MyData.csv")
+
